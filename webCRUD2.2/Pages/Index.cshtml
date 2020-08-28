@@ -1,0 +1,48 @@
+﻿@page
+@model webCRUD2._2.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Crear">Crear nuevo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.empleado[0].empnom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empleado[0].email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.empleado[0].salario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.empleado) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.empnom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.salario)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.empid">Editar</a> |
+                <a asp-page="./Details" asp-route-id="@item.empid">Detalles</a> |
+                <a asp-page="./Delete" asp-route-id="@item.empid">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
